@@ -414,9 +414,24 @@
      ═══════════════════════════════════════════ */
 
   function initStory(storyImages) {
-    $('#storyTitle').textContent = CONFIG.story.title;
-    $('#storyContent').textContent = CONFIG.story.content;
+  $('#storyTitle').textContent = CONFIG.story.title;
 
+  const storyContent = $('#storyContent');
+  const rawText = CONFIG.story.content;
+
+  const storyLines = rawText.split("\n");
+
+  storyContent.innerHTML = storyLines
+    .map(line => {
+      if (line.trim() === "") return "<br>";
+
+      const first = line.charAt(0);
+      const rest = line.slice(1);
+
+      return `<span class="first-letter">${first}</span>${rest}`;
+    })
+    .join("<br>");
+}
     const container = $('#storyPhotos');
     // Remove loading placeholder if present
     const placeholder = container.querySelector('.loading-placeholder');
