@@ -1,5 +1,5 @@
 /**
- * Wedding Invitation Configuration
+ * Luxury Gold Wedding Invitation Configuration
  *
  * 이 파일에서 청첩장의 모든 정보를 수정할 수 있습니다.
  * 이미지는 설정이 필요 없습니다. 아래 폴더에 순번 파일명으로 넣으면 자동 감지됩니다.
@@ -14,37 +14,37 @@
 
 const CONFIG = {
   // ── 초대장 열기 ──
-  useCurtain: false,  // 초대장 열기 화면 사용 여부 (true: 사용, false: 바로 본문 표시)
+  useCurtain: true,  // 초대장 열기 화면 사용 여부 (true: 사용, false: 바로 본문 표시)
 
   // ── 메인 (히어로) ──
   groom: {
-    name: "이세현",
-    nameEn: "Lee Se Hyun",
-    father: "이용욱",
-    mother: "김연자",
+    name: "신랑",
+    nameEn: "Groom",
+    father: "아버지",
+    mother: "어머니",
     fatherDeceased: false,
     motherDeceased: false
   },
 
   bride: {
-    name: "김예원",
-    nameEn: "Kim Ye Won",
-    father: "김주진",
-    mother: "이유진",
-    fatherDeceased: true,
+    name: "신부",
+    nameEn: "Bride",
+    father: "아버지",
+    mother: "어머니",
+    fatherDeceased: false,
     motherDeceased: false
   },
 
   wedding: {
-    date: "2026-08-23",
-    time: "12:00",
-    venue: "잠실 더베네치아",
-    hall: "웨딩홀 3층",
-    address: "서울시 송파구 올림픽로 35 다길 42 (루터회관 3층)",
-    tel: "02-6424-7000",
+    date: "2026-05-09",
+    time: "13:00",
+    venue: "예식장 이름",
+    hall: "그랜드홀 5층",
+    address: "서울특별시 강남구 테헤란로 123",
+    tel: "02-1234-5678",
     mapLinks: {
-      kakao: "https://kko.to/8x6IQU7Vq5",
-      naver: "https://naver.me/5UEc8CvQ"
+      kakao: "https://map.kakao.com/",
+      naver: "https://map.naver.com/"
     }
   },
 
@@ -57,11 +57,8 @@ const CONFIG = {
   // ── 우리의 이야기 ──
   story: {
     title: "우리의 이야기",
-    content: "세상에서 가장 편한 사이로 만나,\n현관 앞에서 서로를 기다리고,\n\n예쁜 웃음으로 하루를 나누며,\n원래부터 함께였던 것처럼 살아가려 합니다."
+    content: "서로 다른 길을 걷던 두 사람이\n하나의 길을 함께 걷게 되었습니다.\n\n여러분을 소중한 자리에 초대합니다."
   },
-const storyContentEl = document.getElementById("storyContent");
-
-
 
   // ── 오시는 길 ──
   // (mapLinks는 wedding 객체 내에 포함)
@@ -69,19 +66,20 @@ const storyContentEl = document.getElementById("storyContent");
   // ── 마음 전하실 곳 ──
   accounts: {
     groom: [
-      { role: "신랑", name: "이세현", bank: "국민은행", number: "000-000-000000" },
-      { role: "아버지", name: "이용욱", bank: "신한은행", number: "000-000-000000" },
-      { role: "어머니", name: "김연자", bank: "우리은행", number: "000-000-000000" }
+      { role: "신랑", name: "홍길동", bank: "국민은행", number: "000-000-000000" },
+      { role: "아버지", name: "홍판서", bank: "신한은행", number: "000-000-000000" },
+      { role: "어머니", name: "김부인", bank: "우리은행", number: "000-000-000000" }
     ],
     bride: [
-      { role: "신부", name: "김예원", bank: "하나은행", number: "000-000-000000" },
-      { role: "어머니", name: "이유진", bank: "농협은행", number: "000-000-000000" }
+      { role: "신부", name: "김영희", bank: "하나은행", number: "000-000-000000" },
+      { role: "아버지", name: "김사장", bank: "기업은행", number: "000-000-000000" },
+      { role: "어머니", name: "이부인", bank: "농협은행", number: "000-000-000000" }
     ]
   },
 
   // ── 링크 공유 시 나타나는 문구 ──
   meta: {
-    title: "세현 ♥ 예원 결혼합니다",
-    description: "2026년 8월 23일, 소중한 분들을 초대합니다."
+    title: "신랑 ♥ 신부 결혼합니다",
+    description: "2026년 5월 9일, 소중한 분들을 초대합니다."
   }
 };
