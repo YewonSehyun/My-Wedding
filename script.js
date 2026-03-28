@@ -1,5 +1,5 @@
 /**
- * Classic Elegant Wedding Invitation
+ * Luxury Gold Wedding Invitation
  * Korean Mobile 청첩장 - Script
  */
 
@@ -26,6 +26,14 @@
     const h12 = hours % 12 || 12;
     const minuteStr = minutes > 0 ? ` ${minutes}분` : '';
     return `${year}년 ${month}월 ${date}일 ${day}요일 ${period} ${h12}시${minuteStr}`;
+  }
+
+  function formatDateShort(dateStr) {
+    const d = new Date(`${dateStr}T00:00:00`);
+    const year = d.getFullYear();
+    const month = String(d.getMonth() + 1).padStart(2, '0');
+    const date = String(d.getDate()).padStart(2, '0');
+    return `${year}.${month}.${date}`;
   }
 
   function getWeddingDateTime() {
@@ -129,114 +137,26 @@
     const curtain = $('#curtain');
     const btn = $('#curtainBtn');
     const namesEl = $('#curtainNames');
+    const dateEl = $('#curtainDate');
 
     // If useCurtain is false, skip the curtain entirely
     if (CONFIG.useCurtain === false) {
       curtain.style.display = 'none';
-      initPetals();
       return;
     }
 
     namesEl.textContent = `${CONFIG.groom.name}  &  ${CONFIG.bride.name}`;
+    dateEl.textContent = formatDateShort(CONFIG.wedding.date);
 
     btn.addEventListener('click', () => {
       curtain.classList.add('is-open');
       document.body.classList.remove('no-scroll');
       setTimeout(() => {
         curtain.classList.add('is-hidden');
-        initPetals();
       }, 1400);
     });
 
     document.body.classList.add('no-scroll');
-  }
-
-  /* ═══════════════════════════════════════════
-     Falling Petals
-     ═══════════════════════════════════════════ */
-
-  function initPetals() {
-    const canvas = $('#petalCanvas');
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    let width, height;
-    const petals = [];
-    const PETAL_COUNT = 25;
-
-    function resize() {
-      width = canvas.width = window.innerWidth;
-      height = canvas.height = window.innerHeight;
-    }
-
-    resize();
-    window.addEventListener('resize', resize);
-
-    class Petal {
-      constructor() {
-        this.reset(true);
-      }
-
-      reset(initial = false) {
-        this.x = Math.random() * width;
-        this.y = initial ? Math.random() * height * -1 : -20;
-        this.size = 8 + Math.random() * 10;
-        this.speedY = 0.5 + Math.random() * 1;
-        this.speedX = -0.3 + Math.random() * 0.6;
-        this.rotation = Math.random() * Math.PI * 2;
-        this.rotSpeed = (Math.random() - 0.5) * 0.02;
-        this.oscillateAmp = 20 + Math.random() * 30;
-        this.oscillateSpeed = 0.01 + Math.random() * 0.02;
-        this.oscillateOffset = Math.random() * Math.PI * 2;
-        this.opacity = 0.2 + Math.random() * 0.4;
-        this.t = 0;
-      }
-
-      update() {
-        this.t++;
-        this.y += this.speedY;
-        this.x += this.speedX + Math.sin(this.t * this.oscillateSpeed + this.oscillateOffset) * 0.5;
-        this.rotation += this.rotSpeed;
-        if (this.y > height + 20) this.reset();
-      }
-
-      draw() {
-        ctx.save();
-        ctx.translate(this.x, this.y);
-        ctx.rotate(this.rotation);
-        ctx.globalAlpha = this.opacity;
-        ctx.fillStyle = '#e8c8b0';
-        ctx.beginPath();
-        // Petal shape
-        ctx.moveTo(0, 0);
-        ctx.bezierCurveTo(
-          this.size * 0.3, -this.size * 0.4,
-          this.size * 0.7, -this.size * 0.5,
-          this.size, 0
-        );
-        ctx.bezierCurveTo(
-          this.size * 0.7, this.size * 0.3,
-          this.size * 0.3, this.size * 0.3,
-          0, 0
-        );
-        ctx.fill();
-        ctx.restore();
-      }
-    }
-
-    for (let i = 0; i < PETAL_COUNT; i++) {
-      petals.push(new Petal());
-    }
-
-    function animate() {
-      ctx.clearRect(0, 0, width, height);
-      petals.forEach(p => {
-        p.update();
-        p.draw();
-      });
-      requestAnimationFrame(animate);
-    }
-
-    animate();
   }
 
   /* ═══════════════════════════════════════════
@@ -310,12 +230,12 @@
     const parentsHTML = `
       <div class="parent-row">
         ${parentLine(g.father, g.mother, g.fatherDeceased, g.motherDeceased)}
-        <span class="parent-dot">●</span>
+        <span class="parent-dot">&#9670;</span>
         의 아들 <span class="child-name">${g.name}</span>
       </div>
       <div class="parent-row">
         ${parentLine(b.father, b.mother, b.fatherDeceased, b.motherDeceased)}
-        <span class="parent-dot">●</span>
+        <span class="parent-dot">&#9670;</span>
         의 딸 <span class="child-name">${b.name}</span>
       </div>
     `;
@@ -382,7 +302,7 @@
     const gcalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(CONFIG.groom.name + ' ♥ ' + CONFIG.bride.name + ' 결혼식')}&dates=${startDate}/${endDate}&location=${encodeURIComponent(CONFIG.wedding.venue + ' ' + CONFIG.wedding.address)}&details=${encodeURIComponent('결혼식에 초대합니다.')}`;
     $('#googleCalBtn').href = gcalUrl;
 
-    // ICS download
+    // ICS download (Apple Calendar)
     $('#icsDownloadBtn').addEventListener('click', () => {
       const icsContent = [
         'BEGIN:VCALENDAR',
@@ -416,23 +336,8 @@
   function initStory(storyImages) {
     $('#storyTitle').textContent = CONFIG.story.title;
     $('#storyContent').textContent = CONFIG.story.content;
-    const rawText = story.content;
-
-const storyLines = rawText.split("\n");
-
-storyContent.innerHTML = storyLines
-  .map(line => {
-    if (line.trim() === "") return "<br>";
-
-    const first = line.charAt(0);
-    const rest = line.slice(1);
-
-    return `<span class="first-letter">${first}</span>${rest}`;
-  })
-  .join("<br>");
 
     const container = $('#storyPhotos');
-    // Remove loading placeholder if present
     const placeholder = container.querySelector('.loading-placeholder');
     if (placeholder) placeholder.remove();
 
@@ -454,12 +359,10 @@ storyContent.innerHTML = storyLines
 
   function initGallery(galleryImages) {
     const grid = $('#galleryGrid');
-    // Remove loading placeholder if present
     const placeholder = grid.querySelector('.loading-placeholder');
     if (placeholder) placeholder.remove();
 
     if (galleryImages.length === 0) {
-      // Hide gallery section if no images found
       const gallerySection = $('#gallery');
       if (gallerySection) gallerySection.style.display = 'none';
       return;
@@ -559,7 +462,7 @@ storyContent.innerHTML = storyLines
     if (Math.abs(diffX) < minSwipe || Math.abs(diffX) < Math.abs(diffY)) return;
 
     if (diffX > 0) {
-      modalNavigate(1); // swipe left -> next
+      modalNavigate(1);  // swipe left -> next
     } else {
       modalNavigate(-1); // swipe right -> prev
     }
