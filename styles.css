@@ -673,6 +673,13 @@ a {
   margin-bottom: var(--spacing-xl);
 }
 
+.story__text .first-letter {
+  font-weight: 700;
+  color: #6EC1E4;
+  font-size: 1.2em;
+  margin-right: 2px;
+}
+
 .story__photos {
   display: flex;
   flex-direction: column;
