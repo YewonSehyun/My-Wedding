@@ -59,6 +59,25 @@ const CONFIG = {
     title: "우리의 이야기",
     content: "세상에서 가장 편한 사이로 만나,\n현관 앞에서 서로를 기다리고,\n\n예쁜 웃음으로 하루를 나누며,\n원래부터 함께였던 것처럼 살아가려 합니다."
   },
+const storyContentEl = document.getElementById("storyContent");
+
+// 기존 content 가져오기
+const rawText = story.content;
+
+// 줄 단위로 나누기 (\n 기준)
+const storyLines = rawText.split("\n");
+
+// 첫 글자 강조 적용
+storyContentEl.innerHTML = storyLines
+  .map(line => {
+    if (line.trim() === "") return "<br>"; // 빈 줄 유지
+
+    const first = line.charAt(0);
+    const rest = line.slice(1);
+
+    return `<span class="first-letter">${first}</span>${rest}`;
+  })
+  .join("<br>");
 
   // ── 오시는 길 ──
   // (mapLinks는 wedding 객체 내에 포함)
