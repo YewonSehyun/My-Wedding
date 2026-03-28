@@ -61,23 +61,7 @@ const CONFIG = {
   },
 const storyContentEl = document.getElementById("storyContent");
 
-// 기존 content 가져오기
-const rawText = story.content;
 
-// 줄 단위로 나누기 (\n 기준)
-const storyLines = rawText.split("\n");
-
-// 첫 글자 강조 적용
-storyContentEl.innerHTML = storyLines
-  .map(line => {
-    if (line.trim() === "") return "<br>"; // 빈 줄 유지
-
-    const first = line.charAt(0);
-    const rest = line.slice(1);
-
-    return `<span class="first-letter">${first}</span>${rest}`;
-  })
-  .join("<br>");
 
   // ── 오시는 길 ──
   // (mapLinks는 wedding 객체 내에 포함)
