@@ -672,7 +672,14 @@ a {
   white-space: pre-line;
   margin-bottom: var(--spacing-xl);
 }
-
+.story__text .first-letter {
+  font-weight: 700;
+  color: #6EC1E4;
+  font-size: 1.3em;
+  margin-right: 3px;
+  display: inline-block;
+  transform: translateY(1px);
+}
 .story__photos {
   display: flex;
   flex-direction: column;
