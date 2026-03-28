@@ -413,7 +413,7 @@
      Story Section
      ═══════════════════════════════════════════ */
 
-  function initStory(storyImages) {
+function initStory(storyImages) {
   $('#storyTitle').textContent = CONFIG.story.title;
 
   const storyContent = $('#storyContent');
@@ -432,7 +432,6 @@
     })
     .join("<br>");
 
-  // 👇 이 부분이 함수 안에 있어야 함!!
   const container = $('#storyPhotos');
 
   const placeholder = container.querySelector('.loading-placeholder');
