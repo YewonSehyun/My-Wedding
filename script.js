@@ -447,7 +447,7 @@ function initStory(storyImages) {
     div.addEventListener('click', () => openPhotoModal(storyImages, i));
     container.appendChild(div);
   });
-}
+
     const container = $('#storyPhotos');
     // Remove loading placeholder if present
     const placeholder = container.querySelector('.loading-placeholder');
