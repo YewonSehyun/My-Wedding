@@ -432,9 +432,9 @@ function initStory(storyImages) {
     })
     .join("<br>");
 
-  const container = $('#storyPhotos');
+  const storyPhotos = $('#storyPhotos'); // 🔥 이름 변경
 
-  const placeholder = container.querySelector('.loading-placeholder');
+  const placeholder = storyPhotos.querySelector('.loading-placeholder');
   if (placeholder) placeholder.remove();
 
   if (storyImages.length === 0) return;
@@ -445,9 +445,9 @@ function initStory(storyImages) {
     div.setAttribute('data-animate', 'fade-up');
     div.innerHTML = `<img src="${src}" alt="스토리 사진 ${i + 1}" loading="lazy">`;
     div.addEventListener('click', () => openPhotoModal(storyImages, i));
-    container.appendChild(div);
+    storyPhotos.appendChild(div);
   });
-  }
+}
 
   /* ═══════════════════════════════════════════
      Gallery Section
