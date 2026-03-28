@@ -447,22 +447,6 @@ function initStory(storyImages) {
     div.addEventListener('click', () => openPhotoModal(storyImages, i));
     container.appendChild(div);
   });
-
-    const container = $('#storyPhotos');
-    // Remove loading placeholder if present
-    const placeholder = container.querySelector('.loading-placeholder');
-    if (placeholder) placeholder.remove();
-
-    if (storyImages.length === 0) return;
-
-    storyImages.forEach((src, i) => {
-      const div = document.createElement('div');
-      div.className = 'story__photo-item animate-item';
-      div.setAttribute('data-animate', 'fade-up');
-      div.innerHTML = `<img src="${src}" alt="스토리 사진 ${i + 1}" loading="lazy">`;
-      div.addEventListener('click', () => openPhotoModal(storyImages, i));
-      container.appendChild(div);
-    });
   }
 
   /* ═══════════════════════════════════════════
