@@ -564,18 +564,18 @@ a {
 
 .greeting__parents .deceased::before {
   content: "";
-display: inline-block;
-width: 14px;
-height: 14px;
-margin-right: 4px;
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-right: 4px;
 
-background-image: url('./images/icon/flower.png');
-background-size: contain;
-background-repeat: no-repeat;
-background-position: center;
+  background-image: url('./images/icon/flower.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 
-opacity: 0.7;
-transform: translateY(1px);
+  opacity: 0.7;
+  transform: translateY(1px);
 } 
 
 /* ═══════════════════════════════════════════
