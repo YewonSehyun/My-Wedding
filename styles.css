@@ -569,7 +569,7 @@ a {
   height: 14px;
   margin-right: 4px;
 
-  background-image: url('./images/icon/flower.png');
+  background-image: url('/images/icon/flower.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
