@@ -563,10 +563,20 @@ a {
 }
 
 .greeting__parents .deceased::before {
-  content: "故 ";
-  font-size: 0.75em;
-  opacity: 0.6;
-}
+  content: "";
+display: inline-block;
+width: 14px;
+height: 14px;
+margin-right: 4px;
+
+background-image: url('./images/icon/flower.png');
+background-size: contain;
+background-repeat: no-repeat;
+background-position: center;
+
+opacity: 0.7;
+transform: translateY(1px);
+} 
 
 /* ═══════════════════════════════════════════
    Calendar Section
