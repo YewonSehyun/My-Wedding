@@ -63,22 +63,22 @@ const CONFIG = {
   // ── 오시는 길 ──
   // (mapLinks는 wedding 객체 내에 포함)
 
-  // ── 마음 전하실 곳 ──
- accounts: {
-  groom: [
-    { role: "신랑", name: "이세현", bank: "국민은행", number: "454-101-01018871" },
-    { role: "아버지", name: "이용욱", bank: "신한은행", number: "000-000-000000" }
-  ],
-
-  bride: [
-    { role: "신부", name: "김예원", bank: "신한은행", number: "110-233-760140" },
-    { role: "어머니", name: "이유진", bank: "신한은행", number: "110-158-398614" }
-  ]
-},
+// ── 마음 전하실 곳 ──
+  accounts: {
+    groom: [
+      { role: "신랑", name: "이세현", bank: "국민은행", number: "454-101-01018871" },
+      { role: "아버지", name: "이용욱", bank: "신한은행", number: "000-000-000000" },
+      { role: "어머니", name: "김연자", bank: "우리은행", number: "000-000-000000" }
+    ],
+    bride: [
+      { role: "신부", name: "김예원", bank: "신한은행", number: "110-233-760140" },
+      { role: "어머니", name: "이유진", bank: "신한은행", number: "110-158-398614" }
+    ]
+  },
 
   // ── 링크 공유 시 나타나는 문구 ──
-meta: {
-  title: "이세현 ♥ 김예원 결혼합니다",
-  description: "2026년 8월 23일 오후 12시, 잠실 더베네치아에서 소중한 분들을 초대합니다."
-}
+  meta: {
+    title: "세현 ♥ 예원 결혼합니다",
+    description: "2026년 8월 23일, 소중한 분들을 초대합니다."
+  }
 };
